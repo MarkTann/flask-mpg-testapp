@@ -36,7 +36,9 @@ def predictions():
                 origin,
                 model_year
                 ]
-    return jsonify(loaded_model.predict([new_data])[0])
+    
+    resultado = {"mpg": loaded_model.predict([new_data])[0]}
+    return jsonify(resultado)
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
